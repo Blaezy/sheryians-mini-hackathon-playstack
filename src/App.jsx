@@ -7,6 +7,7 @@ import GameCard from "./components/gameCard";
 const App = () => {
   const dispatch = useDispatch();
   const { results, query } = useSelector((store) => store.search);
+  console.log(results);
 
   const gameLists = async () => {
     console.log("calling api");
@@ -25,11 +26,11 @@ const App = () => {
         Call API
       </button>
 
-      <div className='flex flex-wrap gap-4'>
+      {/* <div className='flex flex-wrap gap-4'>
         {results.map((game) => (
           <GameCard key={game.id} game={game} />
         ))}
-      </div>
+      </div> */}
     </div>
   );
 };
