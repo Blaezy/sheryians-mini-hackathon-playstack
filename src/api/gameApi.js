@@ -8,7 +8,7 @@ export const fetchGame = async(query) => {
       params: {
         key: RAWG_API_KEY,
         search: query,
-        page_size: 5,
+        page_size: 10,
       },
     });
     return res.data.results.map((game)=>({

@@ -1,15 +1,25 @@
 import React from "react";
 import { Clock } from "lucide-react";
 import GameColumn from "../components/GameColumn";
+import { useSelector } from "react-redux";
 
 const WantPage = () => {
+  const games = useSelector((state) => state.game.games);
+
+  const wantFilteredGames = games.filter((g) => g.status === "want");
+
   return (
     <div className='bg-neutral-900 rounded-xl p-5'>
       <div className='flex items-center gap-2 mb-4'>
         <Clock className='text-indigo-400' size={20} />
-        <h2 className='text-lg font-bold'>Want to Play</h2>
+        <h2 className='text-lg font-bold'>
+          Want to Play{" "}
+          <span className='text-gray-500 text-sm font-normal'>
+            ({wantFilteredGames.length} {wantFilteredGames.length === 1 ? "game" : "games"})
+          </span>
+        </h2>
       </div>
-      <GameColumn status='want' />
+      <GameColumn filteredGames={wantFilteredGames} />
     </div>
   );
 };
