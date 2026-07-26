@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setQuery, setResults } from "./redux/features/searchSlice";
 import { fetchGame } from "./api/gameApi";
-import GameCard from "./components/gameCard";
+import GameCard from "./components/GameCardTemp";
 
 const App = () => {
   const dispatch = useDispatch();
