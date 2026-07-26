@@ -1,5 +1,5 @@
 import React from "react";
-import GameCard from "./GameCardTemp";
+import GameCard from "./GameCard";
 
 const GameColumn = ({ filteredGames, cardSize = "md", onEdit }) => {
   return (
