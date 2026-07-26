@@ -22,7 +22,7 @@ const MainPage = () => {
             Want to Play <span className="text-gray-500 text-xs font-normal">({wantFilteredGames.length} {wantFilteredGames.length === 1 ? "game" : "games"})</span>
           </h2>
         </div>
-        <GameColumn filteredGames={wantFilteredGames} cardSize="sm" onEdit={openEdit} />
+        <GameColumn filteredGames={wantFilteredGames} cardSize="sm" onEdit={openEdit} status="want"/>
       </div>
 
       <div className="bg-neutral-900 rounded-xl p-5">
@@ -32,7 +32,7 @@ const MainPage = () => {
             Playing <span className="text-gray-500 text-xs font-normal">({playingFilteredGames.length} {playingFilteredGames.length === 1 ? "game" : "games"})</span>
           </h2>
         </div>
-        <GameColumn filteredGames={playingFilteredGames} onEdit={openEdit} />
+        <GameColumn filteredGames={playingFilteredGames} onEdit={openEdit}/>
       </div>
 
       <div className="bg-neutral-900 rounded-xl p-5">

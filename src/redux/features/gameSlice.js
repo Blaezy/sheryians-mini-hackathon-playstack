@@ -28,8 +28,13 @@ export const gameSlice = createSlice({
       state.games = state.games.filter((game) => game.id !== action.payload);
       localStorage.setItem("games", JSON.stringify(state.games));
     },
+    
+    removeFilteredGames:(state,action) =>{
+      state.games = state.games.filter((game) => game.status !== action.payload);
+      localStorage.setItem("games", JSON.stringify(state.games));
+    }
   },
 });
 
-export const { addGame, moveGame, updateGame, removeGame } = gameSlice.actions;
+export const { addGame, moveGame, updateGame, removeGame,removeFilteredGames } = gameSlice.actions;
 export default gameSlice.reducer;
