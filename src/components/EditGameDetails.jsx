@@ -9,7 +9,19 @@ const STATUS_TABS = [
   { key: "played", label: "Played" },
 ];
 
-const TAG_OPTIONS = ["Completed", "Played a Bit", "With friends", "100% Achieved", "Yet to Finish", "Dropped Midway"];
+const TAG_OPTIONS = [
+  "Completed",
+  "100% Completed",
+  "Replaying",
+  "Co-op",
+  "Solo",
+  "Backlog Clear",
+  "Speedrun",
+  "Dropped",
+  "On Hold",
+  "Underrated Gem",
+];
+
 
 const EditGameDetails = ({ game, onClose }) => {
   const dispatch = useDispatch();
