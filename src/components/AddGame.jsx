@@ -30,6 +30,7 @@ const AddGame = ({ isOpen, onClose }) => {
             }}
           />
         )}
+
         {step === 2 && (
           <GameDetailsStep game={selectedGame} onClose={handleClose} onBack={() => setStep(1)} />
         )}

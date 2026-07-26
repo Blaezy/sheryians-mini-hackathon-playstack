@@ -8,22 +8,25 @@ export const gameSlice = createSlice({
   reducers: {
     addGame: (state, action) => {
       state.games.push(action.payload);
-      localStorage.setItem("games",JSON.stringify(state.games))
+      localStorage.setItem("games", JSON.stringify(state.games));
     },
     moveGame: (state, action) => {
       const game = state.games.find((game) => game.id === action.payload.id);
       if (game) {
         game.status = action.payload.newStatus;
       }
+      localStorage.setItem("games", JSON.stringify(state.games));
     },
     updateGame: (state, action) => {
       const game = state.games.find((game) => game.id === action.payload.id);
       if (game) {
         Object.assign(game, action.payload.updates);
       }
+      localStorage.setItem("games", JSON.stringify(state.games));
     },
     removeGame: (state, action) => {
       state.games = state.games.filter((game) => game.id !== action.payload);
+      localStorage.setItem("games", JSON.stringify(state.games));
     },
   },
 });

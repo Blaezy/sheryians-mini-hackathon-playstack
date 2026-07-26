@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Star, AlertCircle } from "lucide-react";
-import { addGame } from "../redux/features/gameSlice";
+import { useDispatch } from "react-redux";
+import { Star } from "lucide-react";
+import { updateGame } from "../redux/features/gameSlice";
 
 const STATUS_TABS = [
   { key: "want", label: "Want to Play" },
@@ -11,33 +11,28 @@ const STATUS_TABS = [
 
 const TAG_OPTIONS = ["Completed", "Played a Bit", "With friends", "100% Achieved", "Yet to Finish", "Dropped Midway"];
 
-const GameDetailsStep = ({ game, onClose, onBack }) => {
+const EditGameDetails = ({ game, onClose }) => {
   const dispatch = useDispatch();
-  const games = useSelector((state) => state.game.games);
-  const [status, setStatus] = useState("want");
-  const [rating, setRating] = useState(0);
-  const [hours, setHours] = useState("");
-  const [tags, setTags] = useState([]);
+
+  const [status, setStatus] = useState(game.status);
+  const [rating, setRating] = useState(game.rating || 0);
+  const [hours, setHours] = useState(game.hours || "");
+  const [tags, setTags] = useState(game.tags || []);
 
   const toggleTag = (tag) => {
     setTags((prev) => (prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag]));
   };
 
-  const alreadyPresent = (g) => games.find((item) => item.id === g.id);
-
-  const handleAdd = () => {
-    if (alreadyPresent(game)) return;
+  const handleSave = () => {
     dispatch(
-      addGame({
+      updateGame({
         id: game.id,
-        name: game.name,
-        image: game.image,
-        year: game.year,
-        status,
-        rating: status === "played" ? rating : null,
-        hours: status === "played" ? Number(hours) || null : null,
-        tags: status === "played" ? tags : [],
-        notes: "",
+        updates: {
+          status,
+          rating: status === "played" ? rating : null,
+          hours: status === "played" ? Number(hours) || null : null,
+          tags: status === "played" ? tags : [],
+        },
       })
     );
     onClose();
@@ -45,10 +40,7 @@ const GameDetailsStep = ({ game, onClose, onBack }) => {
 
   return (
     <div>
-      <button onClick={onBack} className="text-gray-400 text-sm mb-4 hover:text-white">
-        ← Back to search
-      </button>
-
+      <h2 className="text-white text-2xl font-bold mb-6">Edit Game</h2>
       <div className="flex items-center gap-4 bg-neutral-800 rounded-xl p-4 mb-6">
         <img src={game.image} alt={game.name} className="w-16 h-16 rounded-lg object-cover" />
         <div>
@@ -56,18 +48,6 @@ const GameDetailsStep = ({ game, onClose, onBack }) => {
           <p className="text-gray-400 text-sm">{game.year}</p>
         </div>
       </div>
-
-      {alreadyPresent(game) && (
-        <div className="flex items-start gap-3 rounded-xl border border-indigo-400/30 bg-indigo-400/10 px-4 py-3 mb-6">
-          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-indigo-400/20">
-            <AlertCircle className="h-4 w-4 text-indigo-400" strokeWidth={2.5} />
-          </div>
-          <div>
-            <p className="text-sm font-semibold text-white">Already in your library</p>
-            <p className="text-xs text-gray-400 mt-0.5">This game is already saved to your profile.</p>
-          </div>
-        </div>
-      )}
 
       <div className="flex gap-2 mb-6">
         {STATUS_TABS.map((tab) => (
@@ -131,14 +111,13 @@ const GameDetailsStep = ({ game, onClose, onBack }) => {
       )}
 
       <button
-        onClick={handleAdd}
-        disabled={alreadyPresent(game)}
-        className="w-full bg-indigo-400 text-black font-semibold py-3 rounded-lg hover:bg-indigo-300 transition-colors cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
+        onClick={handleSave}
+        className="w-full bg-indigo-400 text-black font-semibold py-3 rounded-lg hover:bg-indigo-300 transition-colors cursor-pointer"
       >
-        Add Game
+        Save Changes
       </button>
     </div>
   );
 };
 
-export default GameDetailsStep;
+export default EditGameDetails;

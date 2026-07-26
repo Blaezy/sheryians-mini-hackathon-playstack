@@ -15,8 +15,8 @@ export const searchSlice = createSlice({
       state.results = action.payload;
       state.loading = false;
     },
-    setLoading: (state) => {
-      state.loading = true;
+    setLoading: (state,action) => {
+      state.loading = action.payload;
     },
   },
 });

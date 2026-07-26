@@ -64,7 +64,7 @@ const SearchGameStep = ({ onSelectGame }) => {
               >
                 <img src={game.image} alt={game.name} className="w-10 h-10 rounded object-cover" />
                 <span className="text-white text-sm">{game.name}</span>
-                <span className="text-gray-500 text-xs ml-auto">{game.year}</span>
+                <span className="text-gray-500 text-xs">{game.year}</span>
               </button>
             ))}
           </div>
