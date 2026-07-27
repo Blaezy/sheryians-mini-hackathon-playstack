@@ -20,8 +20,8 @@ const PlayingPage = () => {
 
   return (
     <div className='bg-neutral-900 rounded-xl p-5'>
-      <div className='flex items-center justify-between gap-2 mb-4'>
-        <div className='flex items-center gap-2 mb-4'>
+      <div className='flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4'>
+        <div className='flex items-center gap-2'>
           <Gamepad2 className='text-indigo-400' size={20} />
           <h2 className='text-lg font-bold'>
             Playing{" "}
@@ -30,15 +30,14 @@ const PlayingPage = () => {
             </span>
           </h2>
         </div>
-        <div>
-          <button
-            onClick={handleDeleteAll}
-            className='flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium text-red-400 bg-red-400/10 hover:bg-red-400/20 transition-colors cursor-pointer'
-          >
-            <Trash2 size={14} />
-            Delete all
-          </button>
-        </div>
+
+        <button
+          onClick={handleDeleteAll}
+          className='self-start sm:self-auto flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium text-red-400 bg-red-400/10 hover:bg-red-400/20 transition-colors cursor-pointer'
+        >
+          <Trash2 size={14} />
+          Delete all
+        </button>
       </div>
       <GameColumn filteredGames={playingFilteredGames} onEdit={openEdit} />
     </div>

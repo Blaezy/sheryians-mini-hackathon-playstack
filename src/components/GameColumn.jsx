@@ -19,7 +19,7 @@ const GameColumn = ({ filteredGames, cardSize = "md", onEdit, status = "playing"
   }
 
   return (
-    <div className='flex flex-wrap gap-4'>
+    <div className='flex flex-wrap gap-2 sm:gap-4'>
       {filteredGames.map((game) => (
         <GameCard key={game.id} game={game} size={cardSize} onEdit={onEdit} />
       ))}

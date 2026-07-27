@@ -4,8 +4,8 @@ import { useDispatch } from "react-redux";
 import { removeGame } from "../redux/features/gameSlice";
 
 const sizeMap = {
-  sm: "w-32 h-48",
-  md: "w-44 h-64",
+  sm: "w-28 h-40 sm:w-32 sm:h-48",
+  md: "w-32 h-48 sm:w-44 sm:h-64",
 };
 
 const GameCard = ({ game, size = "md", onEdit }) => {
@@ -26,7 +26,7 @@ const GameCard = ({ game, size = "md", onEdit }) => {
         <h3 className="text-white text-sm font-semibold leading-tight truncate">{name}</h3>
         {year && <p className="text-gray-300 text-xs mt-0.5">{year}</p>}
       </div>
-      <div className="absolute top-2 right-2 flex gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10">
+      <div className="absolute top-2 right-2 flex gap-1.5 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-200 z-10">
         <button
           onClick={(e) => {
             e.stopPropagation();

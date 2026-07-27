@@ -14,7 +14,7 @@ const MainLayout = () => {
   return (
     <div className="min-h-screen bg-black text-white">
       <Navbar onAddClick={() => setIsAddOpen(true)} />
-      <div className="px-10 py-6">
+      <div className="px-4 sm:px-10 py-6">
         <Outlet context={{ openEdit }} />
       </div>
 

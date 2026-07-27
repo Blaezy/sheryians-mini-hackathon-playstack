@@ -20,7 +20,7 @@ const PlayedGameCard = ({ game ,onEdit}) => {
         />
       </div>
 
-      <div className='absolute top-2 right-2 flex gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10'>
+      <div className='absolute top-2 right-2 flex gap-1.5 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-200 z-10'>
         <button
           onClick={() => onEdit(game)}
           className='flex h-7 w-7 items-center justify-center rounded-full bg-black/60 hover:bg-indigo-400 hover:text-black text-white transition-colors cursor-pointer'
